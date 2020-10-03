@@ -1,0 +1,159 @@
+@charset "UTF-8";
+@font-face {
+    font-family: "Montserrat";
+    src: url("../fonts/montserrat.ttf");
+}
+
+body {
+    font-family: Montserrat, sans-serif;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background: #F4F9FF;
+}
+
+button {
+    border-radius: 0.75em;
+    color: white;
+    padding: 0.5em;
+    font-size: 1em;
+    font-family: Montserrat, sans-serif;
+    border: solid 3px white;
+    transition: 0.2s;
+    cursor: pointer;
+    outline: none;
+}
+
+button:current {
+    text-decoration: none;
+}
+
+input[type=text] {
+    font-family: Montserrat, sans-serif;
+    border-radius: 25vw;
+    border: solid 1px black;
+    transition: 0.2s;
+    padding: 0.5em 1em;
+    outline: none;
+    background: #F4F9FF;
+    width: 28vw;
+}
+
+input[type=text]:focus {
+    border-color: #EEDC00;
+    transition: 0.2s;
+    padding: 0.75em 1.5em;
+    background: white;
+}
+
+button:hover, button:focus {
+    border-color: #EEDC00;
+    transition: 0.2s;
+}
+
+#answers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.answer_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 4em;
+    color: #101820;
+    width: 30vw;
+}
+
+#action_buttons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 30vw;
+    flex-wrap: wrap;
+}
+
+#action_buttons > button {
+    width: 50%;
+}
+
+#send_anwsers {
+    background: #00C65E;
+}
+
+#new_verb {
+    background: #0091DA;
+}
+
+#clue {
+    background: #efcd00;
+}
+
+#hard_reset {
+    background: #3B3FB6;
+}
+
+#verb {
+    font-size: 3em;
+    color: #101820;
+}
+
+#subtext {
+    height: 2em;
+    color: #C88242;
+    font-size: 1.5em;
+}
+
+#tries {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    color: #101820;
+}
+
+.alerts {
+    position: fixed;
+    padding: 0;
+    z-index: 999;
+    left: 50%;
+    top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.alerts > div {
+    position: relative;
+    left: -50%;
+    padding: 0.5vw 1vw;
+    font-size: 1vw;
+    border: solid 2px rgba(16, 24, 34, 0.3);
+    border-radius: 25px;
+    margin-bottom: 0.5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fail {
+    background: #A50034;
+    color: white;
+}
+
+.info {
+    background: #F1B434;
+    color: white;
+}
+
+.success {
+    background: #7CCC6C;
+    color: white;
+}

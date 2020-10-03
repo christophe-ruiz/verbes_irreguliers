@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Irregular Verbs</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/alerts.js"></script>
+    <script src="js/actions.js"></script>
+    <script src="js/reactionMessage.js"></script>
+    <script src="js/engine.js"></script>
+</head>
+
+<body>
+    <span id="verb"></span>
+    <span id="subtext"></span>
+
+    <ul class="alerts"></ul>
+
+    <form id="answers" action="json/check_answers.php" method="post" enctype="multipart/form-data">
+        <div id="answers-container">
+            <div class="answer_box">
+                <input name="infinitive" type="text" id="infinitive"/>
+                <label for="infinitive">Infinitive</label>
+            </div>
+
+            <div class="answer_box">
+                <input name="simple_past" type="text" id="simple_past"/>
+                <label for="simple_past">Simple past</label>
+                <input name="simple_past_other" type="text" id="simple_past_other"/>
+                <label for="simple_past_other" id="simple_past_other_lbl">Other simple past</label>
+            </div>
+
+            <div class="answer_box">
+                <input name="past_participle" type="text" id="past_participle"/>
+                <label for="past_participle">Past participle</label>
+                <input name="past_participle_other" type="text" id="past_participle_other"/>
+                <label for="past_participle_other" id="past_participle_other_lbl">Other past participle</label>
+            </div>
+        </div>
+
+        <div id="action_buttons">
+            <button id="new_verb" type="button">New verb</button>
+            <button id="send_anwsers" type="submit">Submit</button>
+            <button id="hard_reset" type="button">Reset</button>
+            <button id="clue" type="button">Clue</button>
+        </div>
+    </form>
+
+
+</body>
+</html>
