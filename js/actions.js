@@ -7,6 +7,7 @@ let hideUselessFields = function () {
 };
 
 let initVerbs = function () {
+    emptyClues();
     hideUselessFields();
     $.ajax({
         url: "json/init_verbs.php",
@@ -20,6 +21,7 @@ let initVerbs = function () {
 };
 
 let getNewVerb = function () {
+    emptyClues();
     hideUselessFields();
     $.ajax({
         url: '../json/get_new_verb.php'
@@ -52,17 +54,21 @@ let hardReset = function () {
     $.ajax({
         url: '../json/hard_reset.php'
     }).done(() => {
-        $('#infinitive').attr('placeholder', "");
-        $('#simple_past').attr('placeholder', "");
-        $('#past_participle').attr('placeholder', "");
-        $('#simple_past_other').attr('placeholder', "");
-        $('#past_participle_other').attr('placeholder', "");
+        emptyClues();
         initVerbs();
         createAlert('info', "Reset successful !");
     }).fail(() => {
         createAlert('fail', "Couldn't hard reset.");
     });
     return false;
+};
+
+let emptyClues = function () {
+    $('#infinitive').attr('placeholder', "");
+    $('#simple_past').attr('placeholder', "");
+    $('#past_participle').attr('placeholder', "");
+    $('#simple_past_other').attr('placeholder', "");
+    $('#past_participle_other').attr('placeholder', "");
 };
 
 let getClue = function () {
