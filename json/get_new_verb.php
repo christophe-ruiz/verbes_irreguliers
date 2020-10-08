@@ -9,6 +9,7 @@ $verbs = unserialize($_SESSION['verbs']);
 $verb = $verbs->getNewVerb();
 $_SESSION['verb'] = serialize($verb);
 $_SESSION['verbs'] = serialize($verbs);
+$_SESSION['clue_index'] = 0;
 $obj->verb = $verb;
 
 header('Cache-Control: no-cache, must-revalidate');

@@ -19,10 +19,7 @@ if (isset($_POST['past_participle_other']))
     $answer_pastParticiple_other = trim(strtolower($_POST['past_participle_other']));
 
 $otherSpNotSetNotNormal = (!isset($answer_simplePast_other) && strpos($real_verb['Simple Past'], "/"));
-$otherSpNotSetNormal = (!isset($answer_simplePast_other) && !strpos($real_verb['Simple Past'], "/"));
-
 $otherPpNotSetNotNormal = (!isset($answer_pastParticiple_other) && strpos($real_verb['Past Participle'], "/"));
-$otherPpNotSetNormal = (!isset($answer_pastParticiple_other) && !strpos($real_verb['Past Participle'], "/"));
 
 $obj = new stdClass();
 $obj->success = false;
@@ -34,7 +31,7 @@ if (!empty($answer_infinitive) &&
     !empty($answer_simplePast) &&
     !empty($answer_pastParticiple))
 {
-    if ($otherPpNotSetNotNormal || $otherSpNotSetNormal) {
+    if ($otherPpNotSetNotNormal || $otherPpNotSetNotNormal) {
         echo json_encode($obj);
         return;
     }
@@ -70,15 +67,5 @@ if (!empty($answer_infinitive) &&
         $obj->success = true;
     }
 }
-
-$obj -> sp [] = $simplePastAreOk;
-$obj -> sp [] = $simplePasts;
-$obj -> sp [] = $answer_simplePast;
-$obj -> sp [] = $answer_simplePast_other;
-
-$obj -> pp [] = $pastParticipleAreOk;
-$obj -> pp [] = $pastParticiples;
-$obj -> pp [] = $answer_pastParticiple;
-$obj -> pp [] = $answer_pastParticiple_other;
 
 echo json_encode($obj);

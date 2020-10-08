@@ -2,6 +2,7 @@
     "use strict";
     $(() => {
         initVerbs();
+        createAlert('info', 'Clues are now available !');
 
         $('#new_verb').on('click', function () {
             $('#answers')[0].reset();
@@ -14,8 +15,8 @@
         });
 
         $('#clue').on('click', function () {
-            createAlert('info', 'Not available, coming soon !');
             $('#answers')[0].reset();
+            return getClue();
         });
 
         $('#answers').on('submit', function () {

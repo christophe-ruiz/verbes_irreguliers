@@ -25,7 +25,6 @@ let getNewVerb = function () {
         url: '../json/get_new_verb.php'
     }).done((data) => {
         let verb = data.verb;
-        console.log(data);
         $("#verb").text(verb["French"]);
 
         if (verb["Simple Past"].includes("/")) {
@@ -53,10 +52,52 @@ let hardReset = function () {
     $.ajax({
         url: '../json/hard_reset.php'
     }).done(() => {
+        $('#infinitive').attr('placeholder', "");
+        $('#simple_past').attr('placeholder', "");
+        $('#past_participle').attr('placeholder', "");
+        $('#simple_past_other').attr('placeholder', "");
+        $('#past_participle_other').attr('placeholder', "");
         initVerbs();
         createAlert('info', "Reset successful !");
     }).fail(() => {
         createAlert('fail', "Couldn't hard reset.");
+    });
+    return false;
+};
+
+let getClue = function () {
+    $.ajax({
+        url: '../json/get_clue.php',
+    }).done((data) => {
+        let infinitive = $('#infinitive');
+        infinitive.attr(
+            'placeholder',
+            infinitive.attr('placeholder') +(data.clue['Infinitive'] ? data.clue['Infinitive'] : "")
+        );
+
+        let simple_past = $('#simple_past');
+        simple_past.attr(
+            'placeholder',
+            simple_past.attr('placeholder') + (data.clue['Simple Past'] ? data.clue['Simple Past'] : "")
+        );
+        let simple_past_other = $('#simple_past_other');
+        simple_past_other.attr(
+            'placeholder',
+            simple_past_other.attr('placeholder') + (data.clue['Simple Past Other'] ? data.clue['Simple Past Other'] : "")
+        );
+
+        let past_participle = $('#past_participle');
+        past_participle.attr(
+            'placeholder',
+            past_participle.attr('placeholder') + (data.clue['Past Participle'] ? data.clue['Past Participle'] : "")
+        );
+        let past_participle_other = $('#past_participle_other');
+        past_participle_other.attr(
+            'placeholder',
+            past_participle_other.attr('placeholder') + (data.clue['Past Participle Other'] ? data.clue['Past Participle Other'] : "")
+        );
+    }).fail(() => {
+        new ReactionMessage('fail', "Couldn't get a clue.");
     });
     return false;
 };
